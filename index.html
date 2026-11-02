@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Javohirdan sevgi 💗</title>
+<style>
+:root{
+  --bg1:#1a0618;--bg2:#3a0b36;--pink:#ff4f93;--rose:#ff8fc0;--gold:#ffd6a8;
+  --glass:rgba(255,255,255,.12);--glass-b:rgba(255,255,255,.35);--text:#fff;
+  color-scheme:dark;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{
+  background:radial-gradient(120% 90% at 50% 0%,var(--bg2),var(--bg1) 70%);
+  color:var(--text);font-family:"Poppins","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  overflow:hidden;display:grid;place-items:center;
+}
+/* background */
+.blob{position:fixed;border-radius:50%;filter:blur(60px);opacity:.55;will-change:transform;pointer-events:none}
+.b1{width:46vmax;height:46vmax;background:#ff2d86;left:-15vmax;top:-12vmax;animation:drift 18s ease-in-out infinite alternate}
+.b2{width:40vmax;height:40vmax;background:#8a2bff;right:-14vmax;bottom:-10vmax;animation:drift 22s ease-in-out infinite alternate-reverse}
+.b3{width:28vmax;height:28vmax;background:#ff9a5c;left:40%;top:55%;opacity:.3;animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(8vmax,6vmax,0) scale(1.15)}}
+.float{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.float i{position:absolute;bottom:-10vh;font-style:normal;opacity:0;will-change:transform,opacity;
+  animation:rise var(--d) linear infinite;animation-delay:var(--l);left:var(--x);font-size:var(--s)}
+@keyframes rise{0%{transform:translate3d(0,0,0) rotate(0);opacity:0}10%{opacity:.8}
+  100%{transform:translate3d(var(--w),-115vh,0) rotate(var(--r));opacity:0}}
+
+/* stage */
+.stage{width:min(92vw,460px);perspective:1100px;position:relative;z-index:2}
+.scene{display:none}
+.scene.on{display:block;animation:enter .9s cubic-bezier(.2,.9,.25,1.1) both}
+.scene.out{display:block;animation:leave .6s ease-in both;pointer-events:none}
+@keyframes enter{from{opacity:0;transform:translate3d(0,40px,-200px) rotateX(18deg) scale(.9)}to{opacity:1;transform:none}}
+@keyframes leave{to{opacity:0;transform:translate3d(0,-30px,150px) scale(1.08);filter:blur(6px)}}
+.card{
+  position:relative;padding:34px 26px 30px;border-radius:34px;text-align:center;
+  background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.06));
+  border:1px solid var(--glass-b);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);
+  box-shadow:0 30px 70px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -20px 40px rgba(255,79,147,.12);
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out;
+  transform-style:preserve-3d;will-change:transform;overflow:hidden;
+}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.28) 48%,transparent 62%);
+  transform:translateX(-120%);animation:shine 5s ease-in-out infinite}
+@keyframes shine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.heart3d{font-size:64px;display:inline-block;transform:translateZ(60px);animation:spin 5s ease-in-out infinite;
+  filter:drop-shadow(0 10px 18px rgba(255,60,140,.7))}
+@keyframes spin{0%,100%{transform:translateZ(60px) rotateY(-25deg) scale(1)}50%{transform:translateZ(60px) rotateY(25deg) scale(1.15)}}
+h1{font-size:clamp(24px,6.4vw,32px);line-height:1.25;margin:14px 0 24px;font-weight:700;
+  background:linear-gradient(90deg,#fff,var(--rose),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(40px)}
+.btns{display:flex;flex-direction:column;gap:14px;align-items:center;transform:translateZ(30px)}
+.slot{display:block;width:100%}
+.btn{
+  font:inherit;font-weight:600;font-size:18px;color:#fff;cursor:pointer;width:100%;padding:15px 22px;border-radius:999px;
+  background:linear-gradient(160deg,rgba(255,255,255,.3),rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:0 10px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.7);
+  transition:transform .15s,box-shadow .2s;touch-action:manipulation;
+}
+.btn:hover{transform:translateY(-2px) scale(1.02)}
+.btn.good{background:linear-gradient(160deg,rgba(255,110,170,.75),rgba(255,50,120,.45));animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 10px 34px rgba(255,60,140,.8),inset 0 1px 0 rgba(255,255,255,.7)}}
+.btn.fled{position:fixed;left:0;top:0;width:auto;z-index:50;margin:0;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.btn.gone{opacity:0;transition:opacity .4s;pointer-events:none}
+.final p{font-size:clamp(17px,4.6vw,21px);line-height:1.65;margin:16px 0 4px;transform:translateZ(30px)}
+.final p span{display:inline-block;opacity:0;transform:translateY(14px) scale(.9);animation:word .6s ease-out forwards}
+@keyframes word{to{opacity:1;transform:none}}
+.final .heart3d{font-size:78px;animation-duration:3s}
+.final h1{margin-bottom:6px}
+
+/* celebration */
+.burst{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden}
+.p{position:absolute;left:var(--cx);top:var(--cy);font-size:var(--s);will-change:transform,opacity;
+  animation:fly 1.7s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes fly{0%{transform:translate(-50%,-50%) scale(.2);opacity:1}
+  70%{opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--r)) scale(1);opacity:0}}
+.ring{position:absolute;left:var(--cx);top:var(--cy);width:30px;height:30px;margin:-15px;border-radius:50%;
+  border:3px solid rgba(255,140,190,.9);animation:ring 1.2s ease-out forwards}
+@keyframes ring{to{transform:scale(28);opacity:0;border-width:1px}}
+.flash{position:absolute;inset:0;background:radial-gradient(circle at var(--cx) var(--cy),rgba(255,120,180,.55),transparent 60%);animation:fl 1.3s ease-out forwards}
+@keyframes fl{to{opacity:0}}
+.big{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(40px,13vw,86px);font-weight:800;
+  text-shadow:0 0 30px #ff4f93,0 0 70px #ff4f93;animation:big 1.6s cubic-bezier(.2,1.5,.4,1) forwards;opacity:0}
+@keyframes big{0%{opacity:0;transform:scale(.2) rotate(-12deg)}25%{opacity:1;transform:scale(1.15) rotate(3deg)}
+  75%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.4)}}
+@media (prefers-reduced-motion:reduce){
+  .blob,.float i,.card::before,.heart3d,.btn.good{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="float" id="float"></div>
+
+<main class="stage">
+  <section class="scene on" id="s1">
+    <div class="card tilt">
+      <div class="heart3d">💗</div>
+      <h1>Javohirni qizi kim?</h1>
+      <div class="btns">
+        <span class="slot"><button class="btn run">Bonu</button></span>
+        <span class="slot"><button class="btn run">Farzona</button></span>
+        <span class="slot"><button class="btn good" id="hadicha">Hadicha</button></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="card tilt">
+      <div class="heart3d">🥹</div>
+      <h1>Javohirni rostan sevasanmi?</h1>
+      <div class="btns">
+        <span class="slot"><button class="btn run">Yo‘q</button></span>
+        <span class="slot"><button class="btn good" id="ha">Ha</button></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene final" id="s3">
+    <div class="card tilt">
+      <div class="heart3d">💗</div>
+      <h1>Hadicha 💞</h1>
+      <p id="msg"></p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var fine=matchMedia("(pointer:fine)").matches;
+  var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  /* floating hearts: few CSS-animated elements */
+  var fl=$("#float"),em=["💗","💖","💕","✨","💞","🌸"],n=reduce?0:(innerWidth<600?10:16);
+  for(var i=0;i<n;i++){
+    var e=document.createElement("i");e.textContent=em[i%em.length];
+    e.style.cssText="--x:"+(Math.random()*96)+"%;--s:"+(16+Math.random()*22)+"px;--d:"+(11+Math.random()*10)+"s;--l:-"+(Math.random()*18)+"s;--w:"+((Math.random()-.5)*120)+"px;--r:"+((Math.random()-.5)*160)+"deg";
+    fl.appendChild(e);
+  }
+  document.addEventListener("visibilitychange",function(){fl.style.display=document.hidden?"none":""});
+
+  /* 3D tilt (mouse only) */
+  if(fine&&!reduce){
+    var raf=0;
+    document.addEventListener("pointermove",function(ev){
+      if(raf)return;raf=requestAnimationFrame(function(){
+        raf=0;var x=(ev.clientX/innerWidth-.5),y=(ev.clientY/innerHeight-.5);
+        var c=document.querySelectorAll(".scene.on .tilt");
+        for(var k=0;k<c.length;k++){c[k].style.setProperty("--ry",(x*14).toFixed(1)+"deg");c[k].style.setProperty("--rx",(-y*14).toFixed(1)+"deg")}
+      });
+    });
+  }
+
+  /* runaway buttons */
+  var fled=[];
+  function flee(btn,avoid,ev){
+    if(ev){ev.preventDefault&&ev.preventDefault()}
+    if(!btn.classList.contains("fled")){
+      var r=btn.getBoundingClientRect(),slot=btn.parentNode;
+      slot.style.height=r.height+"px";
+      btn.style.transition="none";
+      document.body.appendChild(btn);
+      btn.classList.add("fled");
+      btn.style.transform="translate("+r.left+"px,"+r.top+"px)";
+      void btn.offsetWidth;btn.style.transition="";
+      fled.push(btn);
+    }
+    var w=btn.offsetWidth,h=btn.offsetHeight,m=10,best=null,a=avoid.getBoundingClientRect(),
+        cur=btn.getBoundingClientRect();
+    for(var t=0;t<14;t++){
+      var x=m+Math.random()*Math.max(1,innerWidth-w-2*m),y=m+Math.random()*Math.max(1,innerHeight-h-2*m);
+      var hitGood=x<a.right+24&&x+w>a.left-24&&y<a.bottom+24&&y+h>a.top-24;
+      var far=Math.hypot(x-cur.left,y-cur.top)>Math.min(160,innerWidth/2);
+      best={x:x,y:y};
+      if(!hitGood&&far)break;
+    }
+    btn.style.transform="translate("+best.x+"px,"+best.y+"px) rotate("+((Math.random()-.5)*14)+"deg)";
+  }
+  function arm(scene,goodId){
+    var good=$(goodId),list=scene.querySelectorAll(".run");
+    Array.prototype.forEach.call(list,function(b){
+      var f=function(ev){flee(b,good,ev)};
+      b.addEventListener("pointerenter",f);
+      b.addEventListener("pointerdown",f);
+      b.addEventListener("touchstart",f,{passive:false});
+      b.addEventListener("click",f);
+      b.addEventListener("focus",f);
+    });
+  }
+  arm($("#s1"),"#hadicha");arm($("#s2"),"#ha");
+
+  /* celebration */
+  var hs=["💖","💗","💕","💘","💝","❤️","🌹","✨"];
+  function celebrate(btn,word,done){
+    var b=document.createElement("div");b.className="burst";
+    var r=btn.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+    b.style.setProperty("--cx",cx+"px");b.style.setProperty("--cy",cy+"px");
+    var html='<div class="flash"></div><div class="ring"></div><div class="ring" style="animation-delay:.2s"></div>';
+    var N=reduce?10:(innerWidth<600?34:48);
+    for(var i=0;i<N;i++){
+      var ang=Math.random()*6.283,d=120+Math.random()*Math.max(innerWidth,innerHeight)*.55;
+      html+='<span class="p" style="--s:'+(18+Math.random()*30)+'px;--dx:'+(Math.cos(ang)*d)+'px;--dy:'+(Math.sin(ang)*d-60)+'px;--r:'+((Math.random()-.5)*540)+'deg;animation-delay:'+(Math.random()*.25)+'s">'+hs[i%hs.length]+'</span>';
+    }
+    html+='<div class="big">'+word+'</div>';
+    b.innerHTML=html;document.body.appendChild(b);
+    setTimeout(function(){b.remove()},2100);
+    setTimeout(done,1250);
+  }
+  function go(from,to){
+    from.classList.remove("on");from.classList.add("out");
+    fled.forEach(function(x){x.classList.add("gone");setTimeout(function(){x.remove()},450)});fled=[];
+    setTimeout(function(){from.classList.remove("out");to.classList.add("on");if(to.id==="s3")typeMsg()},550);
+  }
+  $("#hadicha").addEventListener("click",function(){
+    celebrate(this,"To‘g‘ri! 💖",function(){go($("#s1"),$("#s2"))});
+  });
+  $("#ha").addEventListener("click",function(){
+    celebrate(this,"yana to'g'ri (aqilli qizsande) 💞",function(){go($("#s2"),$("#s3"))});
+  });
+
+  var text="Hadi sani doim sevaman va sevganmanam, seni ko‘p rashk qilaman chunki seni yo‘qotishdan qo‘rqaman. Ba’zi yaqinlarim bilmagan sirlarimni senga aytganman. Sen men uchun eng go‘zal va samimiy ideal qiz san jonim 💗";
+  function typeMsg(){
+    var p=$("#msg");p.textContent="";
+    text.split(" ").forEach(function(w,i){
+      var s=document.createElement("span");s.textContent=w;s.style.animationDelay=(.4+i*.16)+"s";
+      p.appendChild(s);p.appendChild(document.createTextNode(" "));
+    });
+    setTimeout(function(){
+      var b=document.createElement("button");b.className="btn";b.style.marginTop="18px";b.textContent="💗";
+      b.onclick=function(){celebrate(b,"💗",function(){})};
+      $("#s3 .card").appendChild(b);
+    },.4*1000+text.split(" ").length*160+300);
+  }
+})();
+</script>
+</body>
+</html>
